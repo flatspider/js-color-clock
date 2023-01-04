@@ -2,8 +2,6 @@
 
 /*
 
-
-
 console.log the current time on page load
 console.log the current time every second
 Display the current time every second
@@ -18,11 +16,54 @@ Mission Accomplished!
 */
 
 
-// Acquire the current time. 
+
+function timeUpdate(){
+    let timer = new Date(); // Pulls the time from the computer.
+
+
+    let hours = timer.getHours().toString().padStart(2, "0"); // Turn num to string. Adds a zero to the front if return is not two digits.
+    let minutes = timer.getMinutes().toString().padStart(2, "0"); 
+    let seconds = timer.getSeconds().toString().padStart(2, "0");
+
+    const clockView = document.querySelector(".clock-display");
+
+    clockView.textContent = hours + ":" + minutes + ":" + seconds;
+
+    setTimeout(timeUpdate, 500);
+
+}
+
+timeUpdate(); // Initial function call.
+
+
+
+console.log(timer);
+
+console.log(hours);
+console.log(minutes);
+console.log(seconds);
+
 
 // Acquire the current time every second. 
 
+// Use setTimeout() to recheck the clock every second.
+
+//function tickClock {};
+
+    // setTimeout to call new date every 500 ms?
+
+    //setInterval(checkSeconds, 500); // Repeats over and over again with a set interval.
+
+
+
+
 // Modify the clock text to be the actual time.
+
+// Use the . class selector
+
+// Use querySelector to modify the clock.
+
+
 
 // Pad the time return with zeros.
 
