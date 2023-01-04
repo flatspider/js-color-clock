@@ -39,6 +39,28 @@ function timeUpdate(){
     let dynamicWidth = barWidth * secondProgress;
     clockBar.setAttribute('style', 'width:' + dynamicWidth + 'px');
     clockBar.clientWidth = clockBar.clientWidth * secondProgress;
+
+
+
+
+    // Change the background gradient every second that the clock updates.
+
+    const clockBackground = document.querySelector(".clock");
+
+    clockBackground.setAttribute('style', "background: rgb(" + Math.random()*255 + ', ' + Math.random()*255 + ', ' + Math.random()*255 + ')' );
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     setTimeout(timeUpdate, 250);
 
@@ -46,36 +68,8 @@ function timeUpdate(){
 
 timeUpdate(); // Initial function call.
 
-
-//let seconds = timer.getSeconds();
-
-//console.log(seconds);
-
-
-
-
-
-/* console.log(hours);
-console.log(minutes);
-console.log(seconds);
-
-*/
-
-
 // Acquire the current time every second. 
 
-// Use setTimeout() to recheck the clock every second.
-
-//function tickClock {};
-
-    // setTimeout to call new date every 500 ms?
-
-    //setInterval(checkSeconds, 500); // Repeats over and over again with a set interval.
-
-
-
-
-// Modify the clock text to be the actual time.
 
 // Use the . class selector
 
@@ -92,7 +86,19 @@ console.log(seconds);
 
 
 
-// Get a hexadecimal value for the gradient in the background. 
+
+
+
+
+// Get a hexadecimal value for the gradient in the background.
+
+// document query the background clock class
+
+// read out the hexadecimal value
+
+// update the hex value to change the background color
+
+// if when you hover over the clock, read out the hex value
 
 // Update the hexadecimal each second to read out to the gradient. 
 
