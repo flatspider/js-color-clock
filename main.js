@@ -15,33 +15,51 @@ Mission Accomplished!
 
 */
 
+var timer; // Need access to this variable outside of function call.
 
 
 function timeUpdate(){
-    let timer = new Date(); // Pulls the time from the computer.
+   
+    var timer = new Date(); // Pulls the time from the computer.
 
 
-    let hours = timer.getHours().toString().padStart(2, "0"); // Turn num to string. Adds a zero to the front if return is not two digits.
-    let minutes = timer.getMinutes().toString().padStart(2, "0"); 
-    let seconds = timer.getSeconds().toString().padStart(2, "0");
+    var hours = timer.getHours().toString().padStart(2, "0"); // Turn num to string. Adds a zero to the front if return is not two digits.
+    var minutes = timer.getMinutes().toString().padStart(2, "0"); 
+    var seconds = timer.getSeconds().toString().padStart(2, "0");
 
+    // Updates clock display.
     const clockView = document.querySelector(".clock-display");
-
     clockView.textContent = hours + ":" + minutes + ":" + seconds;
 
-    setTimeout(timeUpdate, 500);
+    // Creates growing and shrinking progress bar.
+    var numSeconds = timer.getSeconds();
+    let secondProgress = numSeconds / 60;
+    const clockBar = document.querySelector(".clock-progress-bar");
+    let barWidth = 224; // Magic number.
+    let dynamicWidth = barWidth * secondProgress;
+    clockBar.setAttribute('style', 'width:' + dynamicWidth + 'px');
+    clockBar.clientWidth = clockBar.clientWidth * secondProgress;
+    
+    setTimeout(timeUpdate, 250);
 
 }
 
 timeUpdate(); // Initial function call.
 
 
+//let seconds = timer.getSeconds();
 
-console.log(timer);
+//console.log(seconds);
 
-console.log(hours);
+
+
+
+
+/* console.log(hours);
 console.log(minutes);
 console.log(seconds);
+
+*/
 
 
 // Acquire the current time every second. 
@@ -70,6 +88,9 @@ console.log(seconds);
 // Determine what percentage of a minute has passed. Value / 60 = percentage
 
 // Set the length of the under timer bar to reflect the percentage. Width * percentage
+
+
+
 
 // Get a hexadecimal value for the gradient in the background. 
 
