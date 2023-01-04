@@ -15,21 +15,62 @@ Mission Accomplished!
 
 */
 
-var timer; // Need access to this variable outside of function call.
+var timer; // Need access to this variable outside of function call. Not working.
+
+var hoverTime = false;
 
 
 function timeUpdate(){
+
+
+    // Create a logic evaluation to determine what is displayed on the clock.
    
     var timer = new Date(); // Pulls the time from the computer.
 
+    
 
+    // Get the normal time:
     var hours = timer.getHours().toString().padStart(2, "0"); // Turn num to string. Adds a zero to the front if return is not two digits.
     var minutes = timer.getMinutes().toString().padStart(2, "0"); 
     var seconds = timer.getSeconds().toString().padStart(2, "0");
 
+    // Get the hexadecimal time:
+    var hexHours = timer.getHours().toString(16).padStart(2, "0");
+    var hexMinutes = timer.getMinutes().toString(16).padStart(2, "0");
+    var hexSeconds = timer.getSeconds().toString(16).padStart(2, "0");
+
+    console.log('#' + hexHours + ':' + hexMinutes + ':' + hexSeconds);
+    
+
     // Updates clock display.
     const clockView = document.querySelector(".clock-display");
-    clockView.textContent = hours + ":" + minutes + ":" + seconds;
+
+
+    clockView.addEventListener('mouseover', () => {
+
+        
+        hoverTime = true;
+        
+    
+    });
+
+
+    clockView.addEventListener('mouseout', () => {
+
+        hoverTime = false;
+    
+    });
+
+
+
+
+    if (hoverTime === false) {
+        clockView.textContent = hours + ":" + minutes + ":" + seconds;
+    } else {
+        clockView.textContent = '#' + hexHours + ':' + hexMinutes + ':' + hexSeconds;
+    }
+
+    
 
     // Creates growing and shrinking progress bar.
     var numSeconds = timer.getSeconds();
@@ -43,21 +84,18 @@ function timeUpdate(){
 
 
 
+    var color1 = Math.floor(Math.random()*255);
+    //var hex1 = color1.toString(16);
+    //console.log(hex1);
+
     // Change the background gradient every second that the clock updates.
 
     const clockBackground = document.querySelector(".clock");
 
-    clockBackground.setAttribute('style', "background: rgb(" + Math.random()*255 + ', ' + Math.random()*255 + ', ' + Math.random()*255 + ')' );
-
-
-
-
-
-
-
-
-
-
+    clockBackground.setAttribute('style', "background: rgb(" + color1 + ', ' + Math.random()*255 + ', ' + Math.random()*255 + ')' );
+    
+    // HEX: clockBackground.setAttribute('style', "background: radial-gradient(#' + Math.random()*255 + ', ' + Math.random()*255 + ', ' + Math.random()*255 + ')' );
+    // background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
 
 
 
@@ -67,6 +105,12 @@ function timeUpdate(){
 }
 
 timeUpdate(); // Initial function call.
+
+
+
+
+
+
 
 // Acquire the current time every second. 
 
@@ -104,5 +148,6 @@ timeUpdate(); // Initial function call.
 
 // On hover over the clock, reveal the hexadecimal r g b value. 
 
+const clockView = document.querySelector(".clock-display");
 
 
