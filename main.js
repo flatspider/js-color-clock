@@ -1,23 +1,4 @@
 
-
-/*
-
-console.log the current time on page load
-console.log the current time every second
-Display the current time every second
-Display the current time, padded with zeros to be exactly two digits long, every second
-console.log the percentage of a minute that the current seconds represents (e.g., if 30 seconds have elapsed, console.log 0.5)
-Using the percent above, dynamically modify the length of the timer bar
-console.log a hexidecimal color that is based on the current second, every second
-
-Dynamically update the background color of the clock using the hexidecimal color
-
-Display the generated color's hex value on hover
-Mission Accomplished!
-
-*/
-
-
 var hoverTime = false;
 
 
